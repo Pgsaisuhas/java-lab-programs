@@ -1,48 +1,55 @@
-public class Overloading {
-    
-    // constructor overloading
-    public Overloading() {
-        System.out.println("A new calculator has been created.");
-    }
-    
-    public Overloading(int initialValue) {
-        System.out.println("A new calculator with initial value " + initialValue + " has been created.");
-    }
-    
-    // method overloading
-    public int add(int num1, int num2) {
-        return num1 + num2;
-    }
-    
-    public double add(double num1, double num2) {
-        return num1 + num2;
-    }
-    
-    public int add(int num1, int num2, int num3) {
-        return num1 + num2 + num3;
-    }
-    
-    public static void main(String[] args) {
-        // constructor overloading example
-        Overloading calc1 = new Overloading();
-        Overloading calc2 = new Overloading(5);
-        
-        // method overloading example
-        int sum1 = calc1.add(2, 3);
-        double sum2 = calc1.add(2.5, 3.5);
-        int sum3 = calc1.add(2, 3, 4);
-        
-        System.out.println("Sum1: " + sum1);
-        System.out.println("Sum2: " + sum2);
-        System.out.println("Sum3: " + sum3);
-        
-        int sum4 = calc2.add(2, 3);
-        double sum5 = calc2.add(2.5, 3.5);
-        int sum6 = calc2.add(2, 3, 4);
-        
-        System.out.println("Sum4: " + sum4);
-        System.out.println("Sum5: " + sum5);
-        System.out.println("Sum6: " + sum6);
-    }
-    
+import java.util.Scanner;
+
+class Box {
+	double height, width, breadth;
+
+	Box(double height, double width, double breadth) {
+		this.height = height;
+		this.width = width;
+		this.breadth = breadth;
+	}
+
+	Box() {
+		this.height = this.width = this.breadth = 0;
+	}
+
+	Box(double n) {
+		this.height = this.width = this.breadth = n;
+	}
+
+	double volume(double height, double width, double breadth) {
+		this.height = height;
+		this.width = width;
+		this.breadth = breadth;
+		return this.height * this.width * this.breadth;
+	}
+
+	double volume() {
+		return height * width * breadth;
+	}
+}
+
+public class prg5 {
+	public static void main(String[] args) {
+		Box b1 = new Box(5, 6, 7);
+		Box b2 = new Box();
+		System.out.println("Enter height, width, breadth: ");
+		Scanner in = new Scanner(System.in);
+		double h = in.nextDouble();
+		double w = in.nextDouble();
+		double b = in.nextDouble();
+
+		System.out.print("enter a side of a cube: ");
+		double c = in.nextDouble();
+
+		Box b3 = new Box(c);
+		double vol = b1.volume();
+		System.out.println("Initial volume = " + vol);
+		vol = b2.volume(h, w, b);
+		System.out.println("Updated volume = " + vol);
+		vol = b3.volume();
+		System.out.println("volume of a cube is = " + vol);
+		in.close();
+	}
+
 }
