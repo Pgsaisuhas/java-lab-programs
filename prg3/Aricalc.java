@@ -1,62 +1,54 @@
 import java.util.Scanner;
 
-public class Aricalc {
-    public static void main(String[] args) {
-        double num1, num2, result=0;
-        Scanner in = new Scanner(System.in);
+public class AriCalci {
+	public static void main(String args[]) {
+		Scanner in = new Scanner(System.in);
+		double num1, num2;
+		double result = 0;
+		String choice;
+		String isRunOn = "";
+		while (!isRunOn.equals("no")) {
+			System.out.print("Enter number 1 value: ");
+			num1 = in.nextInt();
+			in.nextLine();
+			System.out.print("Enter the operator(+,-,*,/,%): ");
+			choice = in.next();
+			System.out.print("Enter number 2 value: ");
+			num2 = in.nextInt();
+			in.nextLine();
+			switch (choice) {
+			case "+":
+				result = num1 + num2;
+				break;
+			case "-":
+				result = num1 - num2;
+				break;
+			case "*":
+				result = num1 * num2;
+				break;
+			case "/":
+				if (num2 == 0) {
+					System.out.println("Divide by zero error!!\n");
+					return;
+				}
+				result = num1 / num2;
+				break;
+			case "%":
+				if (num2 == 0) {
+					System.out.println("Divide by zero error!!\n");
+					return;
+				}
+				result = num1 % num2;
+				break;
+			default:
+				System.out.println("Wrong choice of operator!!\n");
+				result = 0;
+			}
+			System.out.println("Result = " + result);
+			System.out.print("Do you want to run again?(Yes/no): ");
+			isRunOn = in.next();
 
-        while (true) {
-            System.out.print("Enter num1 and num2: ");
-            num1 = in.nextDouble();
-            num2 = in.nextDouble();
-
-            System.out.println("\nArithmetic calculator: ");
-            System.out.println("1. Add");
-            System.out.println("2. Subtract");
-            System.out.println("3. Multiply");
-            System.out.println("4. Divide");
-            System.out.println("5. Check remainder");
-            System.out.println("6. Exit");
-            System.out.print("Enter your choice (1-6): ");
-            String choice = in.next();
-            
-
-            switch (choice) {
-                case "1":
-                    result = num1 + num2;
-                    break;
-                case "2":
-                    result = num1 - num2;
-                    break;
-                case "3":
-                    result = num1 * num2;
-                    break;
-                case "4":
-                    if (num2 == 0) {
-                        System.out.println("Error: Cannot divide by zero.");
-                        continue;
-                    }
-                    result = num1 / num2;
-                    break;
-                case "5":
-                    if (num2 == 0) {
-                        System.out.println("Error: Cannot divide by zero.");
-                        continue;
-                    }
-                    result = num1 % num2;
-                    break;
-                case "6":
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid choice.");
-                    // continue;
-            }
-
-            System.out.printf("Result: %.2f\n\n", result);
-            // in.close();
-        }
-        
-    }
+		}
+		in.close();
+	}
 }
-
