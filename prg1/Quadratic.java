@@ -1,31 +1,42 @@
 import java.util.Scanner;
-class Quadratic{
-    public static void main(String args[]) {
-       float a,b,c;
-       System.out.print("Enter the values of A,B,C which are the coefficients of x2, x, constant: ");
-       Scanner in = new Scanner(System.in);
-       a = in.nextFloat();
-       b = in.nextFloat();
-       c = in.nextFloat();
 
-       float disc = (b*b)-(4*a*c);
+public class Quadratic {
 
-       if(disc > 0){
-        float root1, root2;
-        root1 = ((-b)+(float)(Math.sqrt(disc)))/(2*a);
-        root2 = ((-b)-(float)(Math.sqrt(disc)))/(2*a);
-        System.out.printf("The Roots are Real and distinct\nRoot1: %.2f\nRoot2: %.2f\n",root1,root2);
-       }else if(disc == 0){
-        float root;
-        root = (-b)/(2*a);
-        System.out.printf("The Roots are Real and Equal\nRoot1: %.2f\nRoot2: %.2f\n",root,root);
-       }else{
-        float rp, ip;
-        rp = (-b)/(2*a);
-        ip = (float)(Math.sqrt(-disc))/(2*a);
-        System.out.printf("The roots are not real\nRoot1: %.2f + %.2f\nRoot2: %.2f - %.2f\n",rp,ip,rp,ip);
-       }
-       in.close();
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		double a, b, c;
+		double disc, root1, root2, rp, ip;
 
-    }
+		String userInput = "";
+		while (!userInput.equals("no")) {
+			System.out.println("Enter the co-efficients of the quadratic Equation: ");
+			System.out.print("A: ");
+			a = in.nextDouble();
+			System.out.print("B: ");
+			b = in.nextDouble();
+			System.out.print("C: ");
+			c = in.nextDouble();
+			in.nextLine();
+
+			disc = (b * b) - (4 * a * c);
+
+			if (disc > 0) {
+				root1 = (-b + (Math.sqrt(disc))) / (2 * a);
+				root2 = (-b - (Math.sqrt(disc))) / (2 * a);
+				System.out.println("The Roots are real and distinct!\nRoot1: " + root1 + "\nRoot2: " + root2);
+			} else if (disc == 0) {
+				root1 = root2 = (-b) / (2 * a);
+				System.out.println("The Roots are real and equal!\nRoot1: " + root1 + "\nRoot2: " + root2);
+			} else {
+				rp = (-b) / (2 * a);
+				ip = Math.sqrt(-disc) / (2 * a);
+				System.out.println(
+						"The roots are imaginary!\n" + "Root1: " + rp + "+ i " + ip + "\nRoot2: " + rp + "- i " + ip);
+			}
+
+			System.out.println("Do you want to run again?(Yes/No): ");
+			userInput = in.next();
+
+		}
+	}
 }
